@@ -1,0 +1,44 @@
+@startuml
+!include https://raw.githubusercontent.com/jonathar/plantuml_styles/main/DB_Schema.puml
+LAYOUT_WITH_LEGEND()
+
+Table(user, "user\n(User in our system)") {
+    pk(id) INTEGER
+    not_null(unique(username)) VARCHAR[32]
+    not_null(password) VARCHAR[64]
+    constraints_header()
+    unique_constraint(uc_user (id, username))
+}
+
+Table(session, "session\n(session for user)") {
+    pk(id) INTEGER
+    fk(not_null(user_id)) INTEGER
+    not_null(unique(session_id)) VARCHAR[64]
+}
+
+Table(user_profile, "user_profile\n(Some info of user)") {
+    pk(user_id) INTEGER
+    age SMALLINT
+    gender SMALLINT
+    birthday DATETIME
+}
+
+Table(group, "group\n(group of users)") {
+pk(id) INTEGER
+not_null(name) VARCHAR[32]
+}
+
+Table(user_group, "user_group\n(relationship of user and group)") {
+pk(user_id) INTEGER
+pk(group_id) INTEGER
+joined_at DATETIME
+}
+
+user ||..o{ session 
+' One to One
+user ||..|| user_profile
+' One to Zero or Many
+user ||..o{ user_group 
+' One to Zero or Many
+group ||..o{ user_group
+@enduml
