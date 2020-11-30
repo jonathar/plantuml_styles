@@ -2,6 +2,8 @@
 
 A collection of PlantUML styles.
 
+![Example Schema](/assets/db_schema_sample.png?raw=true "Example Schema")
+
 ## Motivation
 
 For starters, I've wanted a good database schema diagramming tool for a while. I recently stumbled across these two  wonderful usages of PlantUML:
@@ -11,7 +13,7 @@ For starters, I've wanted a good database schema diagramming tool for a while. I
 
 ## Usage
 
-Simple add these two lines near the top of of your PlantUML file:
+Simply add these two lines near the top of of your PlantUML file:
 
 ```
   !include https://raw.githubusercontent.com/jonathar/plantuml_styles/main/DB_Schema.puml
