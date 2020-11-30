@@ -1,0 +1,44 @@
+
+!global $LEGEND_TITLE_COLOR = "#000000"
+!global $LEGEND_BG_COLOR = "#FFFFFF"
+!global $LEGEND_FONT_COLOR = "#000000"
+
+!define Table(name,desc) class name as "desc" << (T,#FFAAAA) >>
+!define pk(x) *<b>x</b>
+!define fk(x) +<i>x</i>
+!define unique(x) <color:green>x</color>
+!define not_null(x) <u>x</u>
+!define unique_constraint(x) <color:green>x</color>
+!define constraints_header()  ..<b>constraints</b>..
+
+skinparam LegendBorderColor transparent
+skinparam LegendBackgroundColor transparent
+skinparam LegendFontColor $LEGEND_FONT_COLOR
+
+!procedure LAYOUT_WITH_LEGEND()
+hide stereotype
+legend right
+|<color:$LEGEND_TITLE_COLOR>**Legend:**</color> |
+|<$LEGEND_BG_COLOR> pk(primary key) |
+|<$LEGEND_BG_COLOR> fk(foreign key) |
+|<$LEGEND_BG_COLOR> unique(unique constraint) |
+|<$LEGEND_BG_COLOR> not_null(not null) |
+endlegend
+!endprocedure
+
+' LAYOUT_WITH_LEGEND()
+
+hide methods
+hide stereotypes
+
+skinparam class {
+    BorderColor LightSlateGrey
+    HeaderBackgroundColor LightSteelBlue
+    BackgroundColor White
+    FontStyle bold
+    FontColor White
+    ArrowColor Black
+}
+hide circle
+skinparam linetype ortho
+skinparam dpi 300
